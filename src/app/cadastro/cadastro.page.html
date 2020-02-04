@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Cadastro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding">
+
+    <form [formGroup]="registerForm" (ngSubmit)="submitForm(registerForm)"> <!-- esse cara aqui depois de [formGroup] dentro das aspas tem q ter o mesmo nome do cara q ta no arquivo.ts-->
+
+      <ion-list class="ion-margin-top">
+        <ion-radio-group formControlName="genre">
+          <ion-list-header [class.invalid]="registerForm.controls.genre.invalid && registerForm.controls.genre.touched">
+            <ion-label>Gênero Favorito</ion-label>
+          </ion-list-header>
+
+          <ion-item> <!-- dps de ion-item, colocar class="invalid" faz mudar a cor da barra, ai edita ela no css -->
+            <ion-label>Ação</ion-label>
+            <ion-radio slot="start" value="acao"></ion-radio>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Romance</ion-label>
+            <ion-radio slot="start" value="romance"></ion-radio>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Terror</ion-label>
+            <ion-radio slot="start" value="terror"></ion-radio>
+          </ion-item>
+
+        </ion-radio-group>
+      </ion-list>
+      
+      <ion-list>
+        <ion-item [class.invalid]="registerForm.controls.name.invalid && registerForm.controls.name.touched">
+          <ion-label position="floating">Nome</ion-label>
+          <ion-input type="text" formControlName= "name"></ion-input>
+        </ion-item>
+      
+
+        <ion-item [class.invalid]="registerForm.controls.email.invalid && registerForm.controls.email.touched">
+          <ion-label position="floating">Email</ion-label>
+          <ion-input type="text" formControlName= "email"></ion-input>
+        </ion-item>
+
+        <ion-item [class.invalid]="registerForm.controls.password.invalid && registerForm.controls.password.touched">
+          <ion-label position="floating">Senha</ion-label>
+          <ion-input type="password" formControlName= "password"></ion-input>
+        </ion-item>
+
+        <ion-item [class.invalid]="registerForm.controls.phone.invalid && registerForm.controls.phone.touched">
+          <ion-label position="floating">Telefone</ion-label>
+          <ion-input minlength="15" type="text" formControlName= "phone" [brmasker]="{phone:true}"></ion-input>
+        </ion-item>
+      </ion-list>
+
+      <ion-row class="ion-justify-content-center">
+        <ion-button type="submit" color="danger" shape="round" [disabled]="registerForm.invalid">Cadastrar</ion-button>
+
+
+      </ion-row>
+  
+    </form> 
+
+  </div>
+
+</ion-content>
